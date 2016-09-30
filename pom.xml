@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.circuitwall.ml</groupId>
+    <artifactId>parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.4-SNAPSHOT</version>
+    <modules>
+        <module>algorithm</module>
+        <module>platform-flink</module>
+    </modules>
+    <scm>
+        <developerConnection>scm:git:git@bitbucket.org:circuitwall/machine-learning.git</developerConnection>
+        <connection>scm:git:git@bitbucket.org:circuitwall/machine-learning.git</connection>
+        <url>https://bitbucket.org/circuitwall/machine-learning</url>
+        <tag>com.circuitwall.ml.algorithm-1.0.3</tag>
+    </scm>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>circuitwall-nsa</id>
+            <name>circuitwall-releases</name>
+            <url>https://artifactory.circuitwall.com/libs-release-local</url>
+        </repository>
+        <snapshotRepository>
+            <id>circuitwall-nsa</id>
+            <name>circuitwall-snapshots</name>
+            <url>https://artifactory.circuitwall.com/libs-snapshot-local</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>
