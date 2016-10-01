@@ -37,16 +37,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <distributionManagement>
-        <repository>
-            <id>circuitwall-nsa</id>
-            <name>circuitwall-releases</name>
-            <url>https://artifactory.circuitwall.com/libs-release-local</url>
-        </repository>
-        <snapshotRepository>
-            <id>circuitwall-nsa</id>
-            <name>circuitwall-snapshots</name>
-            <url>https://artifactory.circuitwall.com/libs-snapshot-local</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>
