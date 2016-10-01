@@ -11,9 +11,9 @@
         <module>platform-flink</module>
     </modules>
     <scm>
-        <developerConnection>scm:git:git@bitbucket.org:circuitwall/machine-learning.git</developerConnection>
-        <connection>scm:git:git@bitbucket.org:circuitwall/machine-learning.git</connection>
-        <url>https://bitbucket.org/circuitwall/machine-learning</url>
+        <developerConnection>scm:git:git@github.com:CircuitWall/machine-learning.git</developerConnection>
+        <connection>scm:git:git@github.com:CircuitWall/machine-learning.git</connection>
+        <url>https://github.com/CircuitWall/machine-learning</url>
         <tag>com.circuitwall.ml.algorithm-1.0.3</tag>
     </scm>
     <build>
