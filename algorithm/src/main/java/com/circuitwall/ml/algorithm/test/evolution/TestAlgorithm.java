@@ -1,4 +1,4 @@
-package com.circuitwall.ml.platform.flink.evolution;
+package com.circuitwall.ml.algorithm.test.evolution;
 
 import com.circuitwall.ml.algorithm.evolution.EvolutionAlgorithm;
 import com.circuitwall.ml.algorithm.util.RandomUtil;
@@ -7,13 +7,14 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 /**
+ * An Evolution plan to find minimum sum
  * Created by andrew on 22/03/16.
  */
-public class SmallestSumEA implements EvolutionAlgorithm {
+public class TestAlgorithm implements EvolutionAlgorithm {
     private boolean bestChildFound = false;
 
     @Override
-    public void processBestChild(Comparable[] bestChild, int round, double score) {
+    public void processBestChild(Comparable[] bestChild, int round,double score) {
         if(!bestChildFound){
             if (score == 0) {
                 System.out.println("Best child found in round:" + round);
