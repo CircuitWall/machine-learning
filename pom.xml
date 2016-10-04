@@ -8,6 +8,7 @@
     <modules>
         <module>algorithm</module>
         <module>platform-flink</module>
+        <module>platform-monolithic</module>
     </modules>
     <scm>
         <developerConnection>scm:git:git@github.com:CircuitWall/machine-learning.git</developerConnection>

@@ -1,5 +1,6 @@
 package com.circuitwall.ml.platform.flink.evolution;
 
+import com.circuitwall.ml.algorithm.evolution.Executor;
 import com.circuitwall.ml.platform.flink.evolution.algorithm.EvolutionAlgorithmFlink;
 import com.circuitwall.ml.platform.flink.evolution.model.ScoringResult;
 import com.circuitwall.ml.platform.flink.evolution.operator.MutateGenerator;
@@ -23,31 +24,28 @@ import java.util.stream.Stream;
  * Project: evolution
  * Created by andrew on 09/08/16.
  */
-public class EvolutionFlink implements Serializable {
-    private static final Logger LOGGER = LoggerFactory.getLogger(EvolutionFlink.class);
-    private final EvolutionAlgorithmFlink algorithm;
+public class FlinkExecutor implements Serializable,Executor {
+    private static final Logger LOGGER = LoggerFactory.getLogger(FlinkExecutor.class);
+    private final ExecutionEnvironment env;
 
-    public EvolutionFlink(EvolutionAlgorithmFlink algorithm) {
-        this.algorithm = algorithm;
+    public FlinkExecutor(ExecutionEnvironment env) {
+        this.env=env;
     }
 
-    public EvolutionFlink(EvolutionAlgorithm algorithm) {
-        LOGGER.warn("NOTE:Wrapping an Evolution Algorithm into a Flink version will ignore reconfiguration.");
-        this.algorithm = EvolutionAlgorithmFlink.wrap(algorithm);
-    }
-
-    public Comparable[] execute(ExecutionEnvironment env, int nrParents, int nrChildren, int rounds, Double mutationPercentage) throws Exception {
+    @Override
+    public Comparable[] execute(EvolutionAlgorithm algorithm, int nrParents, int nrChildren, int rounds, Double mutationPercentage) throws Exception {
+        EvolutionAlgorithmFlink flinkAlgorithm = EvolutionAlgorithmFlink.wrap(algorithm);
         List<Comparable[]> parents = Stream.generate(algorithm::generateParent).limit(nrParents).collect(Collectors.toList());
         IterativeDataSet<Comparable[]> source = env.fromCollection(parents).iterate(rounds).name("Source");
         GroupCombineOperator<ScoringResult, Comparable[]> generation = source
                 //Reproduce
-                .combineGroup(new OffspringGenerator(algorithm, nrChildren)).name("OffspringGenerator")
+                .combineGroup(new OffspringGenerator(flinkAlgorithm, nrChildren)).name("OffspringGenerator")
                 //Mutate
-                .map(new MutateGenerator(algorithm, mutationPercentage, (((nrChildren - nrParents) * 100 / (double) nrChildren) - mutationPercentage) / rounds)).name("MutateGenerator")
+                .map(new MutateGenerator(flinkAlgorithm, mutationPercentage, (((nrChildren - nrParents) * 100 / (double) nrChildren) - mutationPercentage) / rounds)).name("MutateGenerator")
                 //Score
-                .partitionByHash(geneArray -> geneArray.getCompareablePayload()).map(new ScoreOperator(algorithm)).name("ScoreOperator")
+                .partitionByHash(geneArray -> geneArray.getCompareablePayload()).map(new ScoreOperator(flinkAlgorithm)).name("ScoreOperator")
                 //Sort and remove bad children
-                .combineGroup(new BestChildOperator(algorithm, nrParents)).name("BestChildOperator");
+                .combineGroup(new BestChildOperator(flinkAlgorithm, nrParents)).name("BestChildOperator");
         DataSet<Comparable[]> result = source.closeWith(generation);
         List<Comparable[]> toReturn = result.collect();
         return toReturn != null && !toReturn.isEmpty() ? toReturn.get(0) : null;
