@@ -16,9 +16,6 @@
         <url>https://github.com/CircuitWall/machine-learning</url>
         <tag>com.circuitwall.ml.algorithm-1.0.3</tag>
     </scm>
-    <properties>
-        <maven.deploy.skip>true</maven.deploy.skip>
-    </properties>
     <build>
         <plugins>
             <plugin>
@@ -66,6 +63,20 @@
                     <releaseProfiles>release</releaseProfiles>
                     <goals>deploy</goals>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
