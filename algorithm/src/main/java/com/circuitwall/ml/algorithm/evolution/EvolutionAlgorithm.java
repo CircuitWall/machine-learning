@@ -5,44 +5,18 @@ import com.circuitwall.ml.algorithm.util.RandomUtil;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Project: evolution-com.circuitwall.ml.algorithm
  * Created by andrew on 14/02/16.
  */
-public interface EvolutionAlgorithm extends Serializable{
-    default void execute(int nrParents, int nrChildren, int rounds, Double mutationPercentage) {
-        List<Comparable[]> parents = Stream.generate(this::generateParent).limit(nrParents).collect(Collectors.toList());
-        RandomUtil.ProbabilityTester tester = RandomUtil.byProbability(mutationPercentage);
-        for (int i = 0; i < rounds; i++) {
-            final List<Comparable[]> finalParents = parents;
-            Set<Comparable[]> children = Stream.generate(() -> procreate(anyItem(finalParents), anyItem(finalParents))).limit(nrChildren).map(
-                    child -> {
-                        if (tester.test()) {
-                            return mutate(child);
-                        } else {
-                            return child;
-                        }
-                    }
-            ).collect(Collectors.toSet());
-            Map<Comparable[], Double> result = children.parallelStream().collect(Collectors.toConcurrentMap(Function.identity(), this::scoreIndividual));
-            List<Comparable[]> sortedChildren = result.entrySet().stream().sorted((o1, o2) -> Double.compare(o2.getValue(), o1.getValue())).map(Map.Entry::getKey).collect(Collectors.toList());
-            processBestChild(sortedChildren.get(0), i, result.get(sortedChildren.get(0)));
-            parents = sortedChildren.subList(0, parents.size());
-        }
-    }
-
+public interface EvolutionAlgorithm extends Serializable {
     /**
      * Process best child hook
      *
      * @param bestChild The best child configuration.
-     * @param round Which round this child is from.
-     * @param score the score made this child best child.
+     * @param round     Which round this child is from.
+     * @param score     the score made this child best child.
      */
     void processBestChild(Comparable[] bestChild, int round, double score);
 
@@ -87,10 +61,15 @@ public interface EvolutionAlgorithm extends Serializable{
      */
     Double scoreIndividual(Comparable[] individual);
 
+    /**
+     * This method meant to select an item out of a collection, it is used to select two candidates to procreate.
+     * @param source a collection of items
+     * @param <T> typed item
+     * @return one of the item
+     */
     default <T> T anyItem(List<T> source) {
         int index = RandomUtil.getRandom().nextInt(source.size());
         return source.get(index);
     }
-
 }
 
