@@ -13,6 +13,11 @@ public class RandomUtil {
         return randomGenerator;
     }
 
+    /**
+     * Generate a com.circuitwall.ml.algorithm.util.RandomUtil.ProbabilityTester
+     * @param percentage on what percentage, this tester should pass
+     * @return a new probability tester
+     */
     public static ProbabilityTester byProbability(double percentage) {
         int idx = Double.toString(percentage).indexOf(".");
         int magnify = 0;
@@ -28,6 +33,9 @@ public class RandomUtil {
         return new ProbabilityTester(base.intValue(), range.intValue());
     }
 
+    /**
+     * A probability tester will test true on certain chance
+     */
     public static class ProbabilityTester implements Serializable {
         private final int base;
         private final int trueRange;
