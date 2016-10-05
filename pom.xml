@@ -5,6 +5,12 @@
     <artifactId>parent</artifactId>
     <packaging>pom</packaging>
     <version>1.1.1-SNAPSHOT</version>
+    <name>CircuitWall Machine Learning Libraries</name>
+    <description>Machine learning libraries for different platforms</description>
+    <url>https://github.com/CircuitWall/machine-learning</url>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
     <modules>
         <module>algorithm</module>
         <module>platform-flink</module>
