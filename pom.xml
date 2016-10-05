@@ -4,7 +4,7 @@
     <groupId>com.circuitwall.ml</groupId>
     <artifactId>parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.1.0</version>
+    <version>1.1.1-SNAPSHOT</version>
     <modules>
         <module>algorithm</module>
         <module>platform-flink</module>
@@ -14,7 +14,7 @@
         <developerConnection>scm:git:git@github.com:CircuitWall/machine-learning.git</developerConnection>
         <connection>scm:git:git@github.com:CircuitWall/machine-learning.git</connection>
         <url>https://github.com/CircuitWall/machine-learning</url>
-        <tag>parent-1.1.0</tag>
+        <tag>com.circuitwall.ml.algorithm-1.0.3</tag>
     </scm>
     <build>
         <plugins>
