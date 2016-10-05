@@ -4,7 +4,7 @@
     <groupId>com.circuitwall.ml</groupId>
     <artifactId>parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.1.1</version>
+    <version>1.1.2-SNAPSHOT</version>
     <name>CircuitWall Machine Learning Libraries</name>
     <description>Machine learning libraries for different platforms</description>
     <url>https://github.com/CircuitWall/machine-learning</url>
@@ -20,7 +20,7 @@
         <developerConnection>scm:git:git@github.com:CircuitWall/machine-learning.git</developerConnection>
         <connection>scm:git:git@github.com:CircuitWall/machine-learning.git</connection>
         <url>https://github.com/CircuitWall/machine-learning</url>
-        <tag>parent-1.1.1</tag>
+        <tag>com.circuitwall.ml.algorithm-1.0.3</tag>
     </scm>
     <build>
         <plugins>
