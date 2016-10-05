@@ -21,6 +21,8 @@ Evolutionary algorithm" - Wikipedia
 
 Supply with implementation of some key logic, you can choose to evolve solution to your problem from "primordial soup" or advanced "primates".
 
+This algorithm is very useful to solve puzzles with multiple dimensions.
+
 [Read more](https://github.com/CircuitWall/machine-learning/wiki/Evolution-Algorithm)
 
 ## Platforms
