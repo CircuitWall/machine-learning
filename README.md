@@ -23,6 +23,9 @@ Supply with implementation of some key logic, you can choose to evolve solution 
 
 This algorithm is very useful to solve puzzles with multiple dimensions.
 
+Flink Execution plan:
+![Flink Plan](/QQ20161013-0@2x.png)
+
 [Read more](https://github.com/CircuitWall/machine-learning/wiki/Evolution-Algorithm)
 
 ## Platforms
