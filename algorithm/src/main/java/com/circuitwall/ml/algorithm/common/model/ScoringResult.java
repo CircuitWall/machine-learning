@@ -39,7 +39,11 @@ public class ScoringResult implements Serializable, Comparable<ScoringResult> {
 
     @Override
     public int compareTo(ScoringResult o) {
-        return getChild().getCompareablePayload().compareTo(o.getChild().getCompareablePayload());
+        if (o != null) {
+            return getChild().getCompareablePayload().compareTo(o.getChild().getCompareablePayload());
+        } else {
+            return Integer.MIN_VALUE;
+        }
     }
 
     @Override

@@ -18,7 +18,7 @@ public class ComparableArray implements Comparable<ComparableArray> {
 
     @Override
     public int compareTo(ComparableArray o) {
-        if (content.length == o.content.length) {
+        if (o != null && content.length == o.content.length) {
             final AtomicInteger toReturn = new AtomicInteger();
             IntStream.range(0, content.length).forEach(
                     value -> {

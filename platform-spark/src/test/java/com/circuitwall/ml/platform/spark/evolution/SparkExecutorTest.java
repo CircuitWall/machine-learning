@@ -6,8 +6,6 @@ import org.apache.spark.api.java.JavaSparkContext;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
-
 public class SparkExecutorTest {
     @org.junit.Test
     public void execute() throws Exception {

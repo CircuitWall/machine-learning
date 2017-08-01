@@ -32,7 +32,7 @@ public interface EvolutionAlgorithm extends Serializable {
      *
      * @param parent1 One of the parents
      * @param parent2 One of the parents
-     * @return
+     * @return Child from parent1 and 2
      */
     default Comparable[] procreate(Comparable[] parent1, Comparable[] parent2) {
         if (parent1 != null && parent1.length > 0 && parent2 != null && parent2.length > 0) {
