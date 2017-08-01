@@ -14,6 +14,7 @@
     <modules>
         <module>algorithm</module>
         <module>platform-flink</module>
+        <module>platform-spark</module>
         <module>platform-monolithic</module>
     </modules>
     <scm>
