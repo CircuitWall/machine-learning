@@ -1,9 +1,8 @@
 package com.circuitwall.ml.platform.flink.evolution.operator;
 
-import com.circuitwall.ml.platform.flink.evolution.algorithm.EvolutionAlgorithmFlink;
-import com.circuitwall.ml.platform.flink.evolution.model.GeneArray;
-import com.circuitwall.ml.platform.flink.evolution.model.ScoringResult;
-import org.apache.flink.api.common.ExecutionConfig;
+import com.circuitwall.ml.algorithm.common.model.GeneArray;
+import com.circuitwall.ml.algorithm.common.model.ScoringResult;
+import com.circuitwall.ml.platform.flink.evolution.algorithm.EvolutionAlgorithmFlink;import org.apache.flink.api.common.ExecutionConfig;
 import org.apache.flink.api.common.functions.RichMapFunction;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.configuration.Configuration;

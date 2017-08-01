@@ -1,15 +1,15 @@
 package com.circuitwall.ml.platform.flink.evolution.operator;
 
+import com.circuitwall.ml.algorithm.common.model.GeneArray;
 import com.circuitwall.ml.platform.flink.evolution.algorithm.EvolutionAlgorithmFlink;
-import com.circuitwall.ml.platform.flink.evolution.model.GeneArray;
 import com.circuitwall.ml.algorithm.util.RandomUtil;
 import org.apache.flink.api.common.ExecutionConfig;
 import org.apache.flink.api.common.functions.RichMapFunction;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.configuration.Configuration;
-import org.apache.flink.hadoop.shaded.org.jboss.netty.util.internal.ConcurrentHashMap;
 
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Project: evolution

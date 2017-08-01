@@ -1,5 +1,6 @@
 package com.circuitwall.ml.platform.flink.evolution.model;
 
+import com.circuitwall.ml.algorithm.common.model.ComparableArray;
 import org.junit.Assert;
 import org.junit.Test;
 

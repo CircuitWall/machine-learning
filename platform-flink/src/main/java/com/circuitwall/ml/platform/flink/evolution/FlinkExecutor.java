@@ -1,8 +1,9 @@
 package com.circuitwall.ml.platform.flink.evolution;
 
+import com.circuitwall.ml.algorithm.common.model.GeneArray;
+import com.circuitwall.ml.algorithm.common.model.ScoringResult;
 import com.circuitwall.ml.algorithm.evolution.Executor;
 import com.circuitwall.ml.platform.flink.evolution.algorithm.EvolutionAlgorithmFlink;
-import com.circuitwall.ml.platform.flink.evolution.model.ScoringResult;
 import com.circuitwall.ml.platform.flink.evolution.operator.MutateGenerator;
 import com.circuitwall.ml.platform.flink.evolution.operator.ScoreOperator;
 import com.circuitwall.ml.algorithm.evolution.EvolutionAlgorithm;
@@ -43,7 +44,7 @@ public class FlinkExecutor implements Serializable,Executor {
                 //Mutate
                 .map(new MutateGenerator(flinkAlgorithm, mutationPercentage, (((nrChildren - nrParents) * 100 / (double) nrChildren) - mutationPercentage) / rounds)).name("MutateGenerator")
                 //Score
-                .partitionByHash(geneArray -> geneArray.getCompareablePayload()).map(new ScoreOperator(flinkAlgorithm)).name("ScoreOperator")
+                .partitionByHash(GeneArray::getCompareablePayload).map(new ScoreOperator(flinkAlgorithm)).name("ScoreOperator")
                 //Sort and remove bad children
                 .combineGroup(new BestChildOperator(flinkAlgorithm, nrParents)).name("BestChildOperator");
         DataSet<Comparable[]> result = source.closeWith(generation);

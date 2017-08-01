@@ -1,8 +1,8 @@
 package com.circuitwall.ml.platform.flink.evolution.operator;
 
+import com.circuitwall.ml.algorithm.common.model.ScoringResult;
 import com.circuitwall.ml.platform.flink.evolution.algorithm.EvolutionAlgorithmFlink;
 import com.circuitwall.ml.platform.flink.evolution.exception.ConfigurationException;
-import com.circuitwall.ml.platform.flink.evolution.model.ScoringResult;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.flink.api.common.ExecutionConfig;
 import org.apache.flink.api.common.functions.RichGroupCombineFunction;
