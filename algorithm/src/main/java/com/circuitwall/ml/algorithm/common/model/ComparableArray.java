@@ -1,4 +1,4 @@
-package com.circuitwall.ml.platform.flink.evolution.model;
+package com.circuitwall.ml.algorithm.common.model;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 

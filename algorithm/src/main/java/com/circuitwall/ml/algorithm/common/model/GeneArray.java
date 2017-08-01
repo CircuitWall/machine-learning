@@ -1,10 +1,12 @@
-package com.circuitwall.ml.platform.flink.evolution.model;
+package com.circuitwall.ml.algorithm.common.model;
+
+import java.io.Serializable;
 
 /**
  * Project: evolution
  * Created by andrew on 10/08/16.
  */
-public class GeneArray {
+public class GeneArray implements Serializable{
     private Comparable[] payload;
 
     public GeneArray() {

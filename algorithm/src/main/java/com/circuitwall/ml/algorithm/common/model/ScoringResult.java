@@ -1,12 +1,14 @@
-package com.circuitwall.ml.platform.flink.evolution.model;
+package com.circuitwall.ml.algorithm.common.model;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+import java.io.Serializable;
 
 /**
  * Project: evolution
  * Created by andrew on 10/08/16.
  */
-public class ScoringResult implements Comparable<ScoringResult> {
+public class ScoringResult implements Serializable, Comparable<ScoringResult> {
 
     private GeneArray child;
     private Double score;
