@@ -11,14 +11,13 @@ import java.util.stream.Stream;
  * Created by andrew on 22/03/16.
  */
 public class TestAlgorithm implements EvolutionAlgorithm {
-    private boolean bestChildFound = false;
 
     @Override
-    public void processBestChild(Comparable[] bestChild, int round,double score) {
-        if(!bestChildFound){
+    public void processBestChild(Comparable[] bestChild, int round, double score) {
+        if (!finished.get()) {
             if (score == 0) {
                 System.out.println("Best child found in round:" + round);
-                bestChildFound = true;
+                finished.set(true);
             } else {
                 System.out.println("Best child round:" + round + " score:" + scoreIndividual(bestChild) + " config:" + Arrays.toString(bestChild));
             }
