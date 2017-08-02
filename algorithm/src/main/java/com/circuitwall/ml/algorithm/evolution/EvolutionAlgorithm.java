@@ -5,12 +5,15 @@ import com.circuitwall.ml.algorithm.util.RandomUtil;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Project: evolution-com.circuitwall.ml.algorithm
  * Created by andrew on 14/02/16.
  */
 public interface EvolutionAlgorithm extends Serializable {
+    AtomicBoolean finished = new AtomicBoolean(false);
+
     /**
      * Process best child hook
      *
@@ -63,13 +66,23 @@ public interface EvolutionAlgorithm extends Serializable {
 
     /**
      * This method meant to select an item out of a collection, it is used to select two candidates to procreate.
+     *
      * @param source a collection of items
-     * @param <T> typed item
+     * @param <T>    typed item
      * @return one of the item
      */
     default <T> T anyItem(List<T> source) {
         int index = RandomUtil.getRandom().nextInt(source.size());
         return source.get(index);
+    }
+
+    /**
+     * Optional check if the program can exit earlier
+     *
+     * @return if more rounds be needed
+     */
+    default boolean isFinished() {
+        return finished.get();
     }
 }
 
