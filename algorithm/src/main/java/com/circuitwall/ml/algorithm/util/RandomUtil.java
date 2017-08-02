@@ -15,6 +15,7 @@ public class RandomUtil {
 
     /**
      * Generate a com.circuitwall.ml.algorithm.util.RandomUtil.ProbabilityTester
+     *
      * @param percentage on what percentage, this tester should pass
      * @return a new probability tester
      */
@@ -48,5 +49,10 @@ public class RandomUtil {
         public boolean test() {
             return getRandom().nextInt(base) < trueRange;
         }
+    }
+
+    public static int BiasedIntGenerator(int rounds, int maxInt) {
+        int toReturn = maxInt > 0 ? randomGenerator.nextInt(maxInt) : maxInt;
+        return rounds > 1 ? BiasedIntGenerator(--rounds, toReturn) : toReturn;
     }
 }
