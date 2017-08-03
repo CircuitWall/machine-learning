@@ -8,7 +8,7 @@ Java 8 and above (stream/parallel stream, default)
 <dependency>
     <groupId>com.circuitwall.ml</groupId>
     <artifactId>algorithm</artifactId>
-    <version>1.1.2</version>
+    <version>1.2.0</version>
 </dependency>
 ```
 
@@ -38,7 +38,7 @@ Or say run it locally.
 <dependency>
     <groupId>com.circuitwall.ml</groupId>
     <artifactId>platform-monolithic</artifactId>
-    <version>1.1.2</version>
+    <version>1.2.0</version>
 </dependency>
 ```
 
@@ -50,7 +50,7 @@ A DAG engine read more here <https://flink.apache.org>
 <dependency>
     <groupId>com.circuitwall.ml</groupId>
     <artifactId>platform-flink</artifactId>
-    <version>1.1.2</version>
+    <version>1.2.0</version>
 </dependency>
 ```
 
@@ -63,6 +63,6 @@ A DAG engine read more here <https://spark.apache.org/>
 <dependency>
     <groupId>com.circuitwall.ml</groupId>
     <artifactId>platform-spark</artifactId>
-    <version>1.1.2</version>
+    <version>1.2.0</version>
 </dependency>
 ```
