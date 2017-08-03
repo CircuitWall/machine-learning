@@ -1,5 +1,6 @@
 package com.circuitwall.ml.platform.flink.evolution.operator;
 
+import com.circuitwall.ml.algorithm.accelerator.EliteOffspringGenerator;
 import com.circuitwall.ml.platform.flink.evolution.algorithm.EvolutionAlgorithmFlink;
 import org.apache.flink.api.common.ExecutionConfig;
 import org.apache.flink.api.common.functions.RichGroupCombineFunction;
@@ -28,7 +29,7 @@ public class OffspringGenerator extends RichGroupCombineFunction<Comparable[], C
     }
 
     private Comparable[] generate(List<Comparable[]> parents) {
-        return algorithm.procreate(algorithm.anyItem(parents), algorithm.anyItem(parents));
+        return EliteOffspringGenerator.generate(algorithm,parents);
     }
 
     @Override

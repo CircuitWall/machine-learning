@@ -1,5 +1,6 @@
 package com.circuitwall.ml.platform.monolithic.evolution;
 
+import com.circuitwall.ml.algorithm.accelerator.EliteOffspringGenerator;
 import com.circuitwall.ml.algorithm.evolution.EvolutionAlgorithm;
 import com.circuitwall.ml.algorithm.evolution.Executor;
 import com.circuitwall.ml.algorithm.util.RandomUtil;
@@ -22,7 +23,7 @@ public class LocalExecutor implements Executor {
         RandomUtil.ProbabilityTester tester = RandomUtil.byProbability(mutationPercentage);
         for (int i = 0; i < rounds; i++) {
             final List<Comparable[]> finalParents = parents;
-            Set<Comparable[]> children = Stream.generate(() -> algorithm.procreate(algorithm.anyItem(finalParents), algorithm.anyItem(finalParents))).limit(nrChildren).map(
+            Set<Comparable[]> children = Stream.generate(() -> EliteOffspringGenerator.generate(algorithm, finalParents)).limit(nrChildren).map(
                     child -> {
                         if (tester.test()) {
                             return algorithm.mutate(child);

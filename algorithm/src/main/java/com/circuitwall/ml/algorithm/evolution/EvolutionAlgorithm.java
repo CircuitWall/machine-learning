@@ -64,17 +64,6 @@ public interface EvolutionAlgorithm extends Serializable {
      */
     Double scoreIndividual(Comparable[] individual);
 
-    /**
-     * This method meant to select an item out of a collection, it is used to select two candidates to procreate.
-     *
-     * @param source a collection of items
-     * @param <T>    typed item
-     * @return one of the item
-     */
-    default <T> T anyItem(List<T> source) {
-        int index = RandomUtil.getRandom().nextInt(source.size());
-        return source.get(index);
-    }
 
     /**
      * Optional check if the program can exit earlier
