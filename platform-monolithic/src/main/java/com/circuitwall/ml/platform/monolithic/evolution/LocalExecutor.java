@@ -21,7 +21,7 @@ public class LocalExecutor implements Executor {
     public Comparable[] execute(EvolutionAlgorithm algorithm, int nrParents, int nrChildren, int rounds, Double mutationPercentage) {
         List<Comparable[]> parents = Stream.generate(algorithm::generateParent).limit(nrParents).collect(Collectors.toList());
         RandomUtil.ProbabilityTester tester = RandomUtil.byProbability(mutationPercentage);
-        for (int i = 0; i < rounds; i++) {
+        for (int i = 0; !algorithm.isFinished() && i < rounds; i++) {
             final List<Comparable[]> finalParents = parents;
             Set<Comparable[]> children = Stream.generate(() -> EliteOffspringGenerator.generate(algorithm, finalParents)).limit(nrChildren).map(
                     child -> {
