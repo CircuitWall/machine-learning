@@ -64,7 +64,7 @@ public class ComplexEquationAlgorithm implements EvolutionAlgorithm {
 
     @Override
     public Comparable[] mutate(Comparable[] orig) {
-        orig[RandomUtil.getRandom().nextInt(orig.length)] = RandomUtil.getRandom().nextBoolean() ? RandomUtils.nextDouble(min, max) : -RandomUtils.nextDouble(min, max);
+        orig[RandomUtil.getRandom().nextInt(orig.length)] = RandomUtil.getRandom().nextBoolean() ? RandomUtils.nextInt(min, max) : -RandomUtils.nextInt(min, max);
         return orig;
     }
 

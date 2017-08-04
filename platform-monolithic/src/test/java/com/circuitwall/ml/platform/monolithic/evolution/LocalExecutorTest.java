@@ -21,7 +21,8 @@ public class LocalExecutorTest {
     @Test
     public void execute2() throws Exception {
         long start = System.currentTimeMillis();
-        ComplexEquationAlgorithm simulator = new ComplexEquationAlgorithm(2017D, "${val0}+${val1}*${val2}-Math.sqrt(${val3}+${val1})", 0, 100);
+        ComplexEquationAlgorithm simulator =
+                new ComplexEquationAlgorithm(8848D, "${val0}+${val1}*${val2}-Math.sqrt(${val3}+${val1})+Math.pow(${val4},${val2})", 0, 1000);
         new LocalExecutor().execute(simulator, 1000, 5000, 100, 5D);
         System.out.println("Took:" + (System.currentTimeMillis() - start));
     }
