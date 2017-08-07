@@ -22,9 +22,12 @@ public class ComplexEquationAlgorithm implements EvolutionAlgorithm {
     private final int min;
     private transient ScriptEngine engine;
 
+
     public ComplexEquationAlgorithm(Double result, String equation, int rangMin, int rangMax) {
         this.result = result;
         this.equation = equation;
+        if (rangMin > rangMax)
+            throw new IllegalArgumentException(String.format("Invalid range %d -> %d", rangMin, rangMax));
         this.min = rangMin;
         this.max = rangMax;
         int nrParamsTmp = StringUtils.countMatches(this.equation, "${val");
@@ -57,14 +60,13 @@ public class ComplexEquationAlgorithm implements EvolutionAlgorithm {
 
     @Override
     public Comparable[] generateParent() {
-        return Stream.generate(() -> RandomUtils.nextInt(min, max))
-                .map(integer -> RandomUtil.getRandom().nextBoolean() ? -integer : integer)
+        return Stream.generate(() -> RandomUtil.getRandom().nextInt(max + 1 - min) + min)
                 .limit(nrParams.get()).collect(Collectors.toList()).toArray(new Comparable[nrParams.get()]);
     }
 
     @Override
     public Comparable[] mutate(Comparable[] orig) {
-        orig[RandomUtil.getRandom().nextInt(orig.length)] = RandomUtil.getRandom().nextBoolean() ? RandomUtils.nextInt(min, max) : -RandomUtils.nextInt(min, max);
+        orig[RandomUtil.getRandom().nextInt(orig.length)] = RandomUtil.getRandom().nextInt(max + 1 - min) + min;
         return orig;
     }
 
