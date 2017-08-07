@@ -1,6 +1,5 @@
 package com.circuitwall.ml.platform.flink.evolution;
 
-import com.circuitwall.ml.algorithm.test.evolution.ComplexEquationAlgorithm;
 import com.circuitwall.ml.algorithm.test.evolution.TestAlgorithm;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.junit.Test;

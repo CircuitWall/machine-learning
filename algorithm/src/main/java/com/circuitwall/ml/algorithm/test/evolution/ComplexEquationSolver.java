@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class ComplexEquationAlgorithm implements EvolutionAlgorithm {
+public class ComplexEquationSolver implements EvolutionAlgorithm {
     private final Double result;
     private final String equation;
     private final AtomicInteger nrParams = new AtomicInteger();
@@ -23,7 +23,7 @@ public class ComplexEquationAlgorithm implements EvolutionAlgorithm {
     private transient ScriptEngine engine;
 
 
-    public ComplexEquationAlgorithm(Double result, String equation, int rangMin, int rangMax) {
+    public ComplexEquationSolver(Double result, String equation, int rangMin, int rangMax) {
         this.result = result;
         this.equation = equation;
         if (rangMin > rangMax)
